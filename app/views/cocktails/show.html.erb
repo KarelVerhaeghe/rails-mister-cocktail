@@ -4,16 +4,16 @@
 <ul>
   <% @cocktail.doses.each do |dose| %>
     <li>
-      <p><%= Ingredient.find(dose.ingredient_id).name %></p>
+      <p><%= dose.ingredient.name %></p>
       <p><%= dose.description %></p>
-        <%= link_to "Delete", dose_path, method: :delete, data: { confirm: "Are you sure?" }%>
+      <%= link_to "Delete", dose_path(dose), :method => :delete, data: { confirm: "Are you sure?" }%>
     </li>
   <% end %>
 </ul>
 <h3> "Add an Ingredient" </h3>
 
 <%= simple_form_for [@cocktail, @dose] do |f| %>
-  <%= f.input :ingredient, collection: Ingredient.all %>
+  <%= f.input :ingredient_id, collection: Ingredient.all %>
   <%= f.input :description %>
   <%= f.submit "Add this ingredient", class: "btn btn-primary" %>
 <% end %>
