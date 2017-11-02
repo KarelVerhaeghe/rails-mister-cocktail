@@ -1,3 +1,5 @@
+ruby '2.3.5'
+
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
@@ -5,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-
+gem 'faker'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
 gem 'simple_form'
