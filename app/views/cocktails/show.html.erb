@@ -10,7 +10,14 @@
     </li>
   <% end %>
 </ul>
-<%= link_to "Add an Ingredient", new_cocktail_dose_path(@cocktail), class: "btn btn-primary" %>
+<h3> "Add an Ingredient" </h3>
+
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <%= f.input :ingredient, collection: Ingredient.all %>
+  <%= f.input :description %>
+  <%= f.submit "Add this ingredient", class: "btn btn-primary" %>
+<% end %>
+
 
 
 <h2><%= link_to "Back to overview", cocktails_path %></h2>
