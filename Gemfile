@@ -8,7 +8,9 @@ git_source(:github) do |repo_name|
 end
 
 gem 'figaro'
-gem 'cloudinary'
+gem 'cloudinary', '1.1.7'
+gem 'attachinary', github: 'assembler/attachinary'
+gem 'jquery-fileupload-rails'
 gem 'faker'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
