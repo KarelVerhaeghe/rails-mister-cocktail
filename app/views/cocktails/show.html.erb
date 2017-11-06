@@ -7,21 +7,36 @@
 <h3>Ingredients</h3>
 <ul>
   <% @cocktail.doses.each do |dose| %>
-    <li>
-      <p><%= dose.ingredient.name %></p>
-      <p><%= dose.description %></p>
-      <%= link_to "Delete", dose_path(dose), :method => :delete, data: { confirm: "Are you sure?" }%>
-    </li>
+    <li> <ul>
+      <li class="list-inline"> <%= dose.description %> </li>
+      <li class="list-inline"> <%= dose.ingredient.name %> </li>
+      <li class="list-inline"> <%= link_to "Delete", dose_path(dose), :method => :delete, data: { confirm: "Are you sure?" }%> </li>
+    </ul> </li>
   <% end %>
 </ul>
-<h3> "Add an Ingredient" </h3>
+<h4> Add an Ingredient </h4>
 
 <%= simple_form_for [@cocktail, @dose] do |f| %>
-  <%= f.input :ingredient_id, collection: Ingredient.all %>
   <%= f.input :description %>
+  <%= f.input :ingredient_id, collection: Ingredient.all %>
   <%= f.submit "Add this ingredient", class: "btn btn-primary" %>
 <% end %>
 
+<h3>Reviews</h3>
+<ul>
+  <% @cocktail.reviews.each do |review| %>
+    <li>
+      <p><%= review.content %></p>
+    </li>
+  <% end %>
+</ul>
+
+<h4> Add a Review </h4>
+
+<%= simple_form_for [@cocktail, @review] do |f| %>
+  <%= f.input :content %>
+  <%= f.submit "Add this review", class: "btn btn-primary" %>
+<% end %>
 
 
 <h2><%= link_to "Back to overview", cocktails_path %></h2>
